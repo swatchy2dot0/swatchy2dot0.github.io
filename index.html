@@ -28,8 +28,10 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
 				var msg = "Sorry but there was an error: ";
 				$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
 			  } else {
-				$( "#subPages" ).append("<div>" + $("#helper").html() + "</div>");
-				$( "#subPages" ).html("");
+				var newHtml = "<div>" + $("#helper").html() + "</div>";
+				console.log("newHtml: " + newHtml);
+				$( "#subPages" ).append(newHtml);
+				$( "#helper" ).html("");
 			  }
 			});
 		}
