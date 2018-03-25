@@ -15,10 +15,18 @@
  
 <b>Projects:</b>
 <ol id="new-projects"></ol>
+<div id="error"/>
  
 <script>
-$( "#new-projects" ).load( "/20183025_test.html", function() {
-  alert( "Load was performed." );
+$( "#new-projects" ).load( "/20183025_test.html",, function( response, status, xhr ) {
+  if ( status == "error" ) {
+    var msg = "Sorry but there was an error: ";
+    $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+  }
+});
+
+$.getJSON( "https://api.github.com/repositories/126679738/contents", function( data ) {
+  $( "#error" ).html( data + "" );
 });
 </script>
  
