@@ -22,16 +22,16 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
 		if (key2 == "name" && (val2+"").match("^20.*html$")) {
 			var success = true;
 			$( "#helper" ).load( "/"+val2, function( response, status, xhr ) {
+			  console.log(val2 + " -> " + status);
 			  if ( status == "error" ) {
 				success = false;
 				var msg = "Sorry but there was an error: ";
 				$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
-			  }
-			});
-			if (success) {
+			  } else {
 				$( "#subPages" ).append("<div>" + $("#helper").html() + "</div>");
 				$( "#subPages" ).html("");
-			}
+			  }
+			});
 		}
 	  })
   })
