@@ -1,48 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>load demo</title>
-  <style>
-  body {
-    font-size: 12px;
-    font-family: Arial;
-  }
-  </style>
+  <title>Amazon Affiliate Links</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
  
-<b>Projects:</b>
-<ol id="new-projects"></ol>
+<h1>Amazon Affiliate Links</h1>
+<div id="subPages"></div>
 <div id="error"/>
+<div id="helper" style="display: none;"/>
  
 <script>
 
 $.getJSON( "https://api.github.com/repositories/126679738/contents", function( data ) {
-  var items = [];
   $.each( data, function( key, val ) {
     $.each( val, function( key2, val2 ) {
 		if (key2 == "name" && (val2+"").match("^20.*html$")) {
-			items.push( "<li id='" + key2 + "'>" + val2 + "</li>" );
-			$( "#new-projects" ).load( "/"+val2, function( response, status, xhr ) {
+			var success = true;
+			$( "#helper" ).load( "/"+val2, function( response, status, xhr ) {
 			  if ( status == "error" ) {
+				success = false;
 				var msg = "Sorry but there was an error: ";
 				$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
 			  }
 			});
+			if (success) {
+				$( "#subPages" ).append("<div>" + $("#helper").html() + "</div>");
+				$( "#subPages" ).html("");
+			}
 		}
-		
-	  });
-  });
- 
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );
-});
-
-
+	  })
+  })
+})
 </script>
  
 </body>
