@@ -8,12 +8,14 @@
 <body>
  
 <h1>Amazon Affiliate Links</h1>
+
 <div id="subPages"></div>
-<div id="error"/>
-<div id="helper" style="display: none;"/>
+
+<div id="error"></div>
+
+<div id="helper" style="display: none;"></div>
  
 <script>
-
 $.getJSON( "https://api.github.com/repositories/126679738/contents", function( data ) {
   $.each( data, function( key, val ) {
     $.each( val, function( key2, val2 ) {
