@@ -17,7 +17,9 @@
 <ol id="new-projects"></ol>
  
 <script>
-$( "#new-projects" ).load( "/20183025_test.html #projects li" );
+$( "#new-projects" ).load( "/20183025_test.html", function() {
+  alert( "Load was performed." );
+});
 </script>
  
 </body>
