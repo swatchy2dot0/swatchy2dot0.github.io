@@ -23,8 +23,9 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
 			
 			$.get( "/"+val2, function( response ) {
 				console.log("response: " + response);
-				jQuery(response).find('div').html()
-				var newHtml = "<div>" + jQuery(response).find('div').html() + "</div>";
+				var divs = jQuery(response).find("div");
+				console.log("divs: " + divs);
+				var newHtml = "<div>" + divs.html() + "</div>";
 				console.log("newHtml: " + newHtml);
 				$( "#subPages" ).append(newHtml);
 			});
