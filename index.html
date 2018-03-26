@@ -20,6 +20,11 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
   $.each( data, function( key, val ) {
     $.each( val, function( key2, val2 ) {
 		if (key2 == "name" && (val2+"").match("^20.*html$")) {
+			
+			$.get( "/"+val2, function( data ) {
+			  console.log("data: " + data);
+			});
+			
 			var success = true;
 			$( "#helper" ).load( "/"+val2, function( response, status, xhr ) {
 			  console.log(val2 + " -> " + status);
