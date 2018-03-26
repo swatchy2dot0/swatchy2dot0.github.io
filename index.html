@@ -23,7 +23,8 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
 			
 			$.get( "/"+val2, function( response ) {
 				console.log("response: " + response);
-				var divs = jQuery(response).find("div");
+				var parsedHTML = $.parseHTML( response )
+				var divs = parsedHTML.find("div");
 				console.log("divs: " + divs);
 				var newHtml = "<div>" + divs.html() + "</div>";
 				console.log("newHtml: " + newHtml);
