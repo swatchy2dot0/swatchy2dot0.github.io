@@ -23,7 +23,7 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
 			
 			$.get( "/"+val2, function( response ) {
 				console.log("response: " + response);
-				$( "#subPages" ).append(response);
+				$( "#subPages" ).append("<div>" + response + "</div>");
 			});
 		}
 	  })
