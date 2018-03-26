@@ -21,23 +21,12 @@ $.getJSON( "https://api.github.com/repositories/126679738/contents", function( d
     $.each( val, function( key2, val2 ) {
 		if (key2 == "name" && (val2+"").match("^20.*html$")) {
 			
-			$.get( "/"+val2, function( data ) {
-			  console.log("data: " + data);
-			});
-			
-			var success = true;
-			$( "#helper" ).load( "/"+val2, function( response, status, xhr ) {
-			  console.log(val2 + " -> " + status);
-			  if ( status == "error" ) {
-				success = false;
-				var msg = "Sorry but there was an error: ";
-				$( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
-			  } else {
-				var newHtml = "<div>" + $("#helper").html() + "</div>";
+			$.get( "/"+val2, function( response ) {
+				console.log("response: " + response);
+				jQuery(response).find('div').html()
+				var newHtml = "<div>" + jQuery(response).find('div').html() + "</div>";
 				console.log("newHtml: " + newHtml);
 				$( "#subPages" ).append(newHtml);
-				$( "#helper" ).html("");
-			  }
 			});
 		}
 	  })
