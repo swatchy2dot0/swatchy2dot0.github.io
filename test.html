@@ -15,20 +15,10 @@
 var param = getURLParameter('url');
 console.log("URL: " + param);
   
-$.ajax({
-     url: "" + param,
-     dataType: 'text',
-     success: function(data) {
-          console.log("data: " + data);
-       if (param) document.getElementById("textoutput").innerHTML = data;
-          var elements = $("<div>").html(data)[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
-          for(var i = 0; i < elements.length; i++) {
-               var theText = elements[i].firstChild.nodeValue;
-               // Do something here
-          }
-     }
+var url = "http://anyorigin.com/go?url=" + encodeURIComponent(param + "&callback=?";
+$.get(url, function(response) {
+  console.log(response);
 });
-
 </script>
 </body>
 </html>
