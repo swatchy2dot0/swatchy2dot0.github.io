@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 <body>
-
 <p id="textoutput"></p>
 
 <script>
@@ -11,7 +13,12 @@
 }
  
 var param = getURLParameter('url');
-if (param) document.getElementById("textoutput").innerHTML = param;
+  
+$.get(param, function(response) {
+  console.log(response);
+  
+  if (param) document.getElementById("textoutput").innerHTML = response;
+});
 
 </script>
 </body>
