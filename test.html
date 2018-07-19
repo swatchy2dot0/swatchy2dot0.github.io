@@ -13,11 +13,20 @@
 }
  
 var param = getURLParameter('url');
+console.log("URL: " + param);
   
-$.get(param, function(response) {
-  console.log(response);
-  
-  if (param) document.getElementById("textoutput").innerHTML = response;
+$.ajax({
+     url: "" + param,
+     dataType: 'text',
+     success: function(data) {
+          console.log("data: " + data);
+       if (param) document.getElementById("textoutput").innerHTML = data;
+          var elements = $("<div>").html(data)[0].getElementsByTagName("ul")[0].getElementsByTagName("li");
+          for(var i = 0; i < elements.length; i++) {
+               var theText = elements[i].firstChild.nodeValue;
+               // Do something here
+          }
+     }
 });
 
 </script>
