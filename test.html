@@ -15,7 +15,7 @@
 var param = getURLParameter('url');
 console.log("URL: " + param);
   
-var url = "http://anyorigin.com/go?url=" + encodeURIComponent(param + "&callback=?";
+var url = "http://anyorigin.com/go?url=" + encodeURIComponent(param + "&callback=?");
 $.get(url, function(response) {
   console.log(response);
 });
