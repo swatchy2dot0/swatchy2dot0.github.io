@@ -14,10 +14,13 @@
  
 var param = getURLParameter('url');
 console.log("URL: " + param);
-  
-var url = "https://anyorigin.com/go?url=" + encodeURIComponent(param + "&callback=?");
-url = encodeURIComponent(param)
+
+var url = encodeURIComponent(param)
 $.get(url, function(response) {
+  console.log(response);
+});
+  
+$.load(url, function(response) {
   console.log(response);
 });
 </script>
