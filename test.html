@@ -7,7 +7,18 @@
 <p id="textoutput"></p>
 
 <script>
-  function getURLParameter(name) {
+  
+function logResults(json){
+  console.log(json);
+}
+
+$.ajax({
+  url: "https://api.github.com/users/jeresig",
+  dataType: "jsonp",
+  jsonpCallback: "logResults"
+});
+
+function getURLParameter(name) {
   var value = decodeURIComponent((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, ""])[1]);
   return (value !== 'null') ? value : false;
 }
@@ -15,15 +26,13 @@
 var paramUrl = getURLParameter('url');
 console.log("URLparam: " + paramUrl);
 
-var url = encodeURIComponent(paramUrl)
+var url = paramUrl; //encodeURIComponent(paramUrl)
 console.log("URL: " + url);
 $.get(url, function(response) {
   console.log(response);
 });
   
-$.load(url, function(response) {
-  console.log(response);
-});
+$( "#textoutput" ).load(url);
 </script>
 </body>
 </html>
