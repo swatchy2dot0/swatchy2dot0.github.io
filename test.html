@@ -12,12 +12,6 @@ function logResults(json){
   console.log(json);
 }
 
-$.ajax({
-  url: "https://api.github.com/users/jeresig",
-  dataType: "jsonp",
-  jsonpCallback: "logResults"
-});
-
 function getURLParameter(name) {
   var value = decodeURIComponent((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, ""])[1]);
   return (value !== 'null') ? value : false;
@@ -28,11 +22,13 @@ console.log("URLparam: " + paramUrl);
 
 var url = paramUrl; //encodeURIComponent(paramUrl)
 console.log("URL: " + url);
-$.get(url, function(response) {
-  console.log(response);
+
+$.ajax({
+  url: "" + url,
+  dataType: "jsonp",
+  jsonpCallback: "logResults"
 });
   
-$( "#textoutput" ).load(url);
 </script>
 </body>
 </html>
