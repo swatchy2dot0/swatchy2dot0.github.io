@@ -22,12 +22,14 @@ console.log("URLparam: " + paramUrl);
 
 var url = paramUrl; //encodeURIComponent(paramUrl)
 console.log("URL: " + url);
+  
+var script = $("<script />", {
+    src: ""+url,
+    type: "application/json"
+  }
+);
 
-$.ajax({
-  url: "" + url,
-  dataType: "jsonp",
-  jsonpCallback: "logResults"
-});
+$("head").append(script);
   
 </script>
 </body>
