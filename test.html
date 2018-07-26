@@ -12,10 +12,11 @@
   return (value !== 'null') ? value : false;
 }
  
-var param = getURLParameter('url');
-console.log("URL: " + param);
+var paramUrl = getURLParameter('url');
+console.log("URLparam: " + paramUrl);
 
-var url = encodeURIComponent(param)
+var url = encodeURIComponent(paramUrl)
+console.log("URL: " + url);
 $.get(url, function(response) {
   console.log(response);
 });
